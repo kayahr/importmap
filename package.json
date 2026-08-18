@@ -1,0 +1,71 @@
+{
+    "$schema": "https://json.schemastore.org/package",
+    "name": "@kayahr/importmap",
+    "version": "0.1.0",
+    "type": "module",
+    "description": "Import map generator for installed Node.js packages",
+    "keywords": [
+        "browser",
+        "cli",
+        "dependencies",
+        "dependency-free",
+        "esm",
+        "importmap",
+        "node_modules"
+    ],
+    "license": "MIT",
+    "author": "Klaus Reimer <k@ailis.de>",
+    "repository": "github:kayahr/importmap",
+    "homepage": "https://github.com/kayahr/importmap",
+    "bugs": "https://github.com/kayahr/importmap/issues",
+    "funding": "https://github.com/kayahr/importmap?sponsor=1",
+    "publishConfig": {
+        "access": "public"
+    },
+    "files": [
+        "lib/main/",
+        "src/main/"
+    ],
+    "exports": "./lib/main/index.js",
+    "bin": {
+        "importmap": "lib/main/cli.js"
+    },
+    "engines": {
+        "node": ">=22.18.0"
+    },
+    "devEngines": {
+        "runtime": {
+            "name": "node",
+            "version": ">=22.18.0",
+            "onFail": "error"
+        },
+        "packageManager": {
+            "name": "npm",
+            "version": ">=11",
+            "onFail": "error"
+        }
+    },
+    "scripts": {
+        "clean": "rm -rf lib",
+        "build": "run build:*",
+        "build:compile": "tsc",
+        "test": "run test:*",
+        "pretest:unit": "npm run build:compile",
+        "test:unit": "ntest",
+        "test:lint": "oxlint --type-aware --deny-warnings",
+        "test:apidoc": "typedoc --emit none",
+        "test:spell": "cspell --no-progress --no-summary",
+        "apidoc": "typedoc",
+        "prepare": "run clean build"
+    },
+    "devDependencies": {
+        "@kayahr/assert": "1.5.0",
+        "@kayahr/cspell": "10.0.1-bundle.2",
+        "@kayahr/npm-utils": "1.1.2",
+        "@kayahr/ntest": "1.3.0",
+        "@kayahr/oxlint-config": "1.40.0",
+        "@kayahr/typedoc": "0.28.20-bundle.1",
+        "@types/node": "26.2.0",
+        "typescript": "7.0.2"
+    }
+}

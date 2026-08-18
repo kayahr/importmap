@@ -1,0 +1,19 @@
+{
+    "$schema": "node_modules/@kayahr/ntest/ntest.schema.json",
+    "files": "lib/test/**/*.test.js",
+    "reporter": [
+        { "name": "spec" },
+        { "name": "lcov", "destination": "lib/test/lcov.info" }
+    ],
+    "coverage": {
+        "enabled": true,
+        "exclude": [
+            "lib/main/cli.js",
+            "lib/test/**/*.js"
+        ],
+        "lines": 100,
+        "branches": 100,
+        "functions": 100
+    },
+    "sourceMaps": true
+}
